@@ -1,0 +1,18 @@
+import React from 'react'
+import {CloudRain,Thermometer,Droplets,Wind} from 'lucide-react'
+import {LineChart,Line,BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer,ComposedChart,Area} from 'recharts'
+import {climateData,vectorIndices} from '../data/sampleData'
+export default function ClimateDashboard(){
+  const combined=climateData.map((c,i)=>({...c,...(vectorIndices[i]||{})}))
+  return(
+    <div className="p-4 lg:p-6 space-y-6">
+      <div><h1 className="text-2xl font-bold text-gray-900">Climate-Responsive Surveillance</h1><p className="text-sm text-gray-500">PAGASA data integrated with entomological vector indices</p></div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">{[{icon:CloudRain,label:'Rainfall (Oct)',value:'230mm',color:'bg-blue-500',sub:'Monthly cumulative'},{icon:Thermometer,label:'Temperature',value:'32.8\u00b0C',color:'bg-orange-500',sub:'Max daily average'},{icon:Droplets,label:'Humidity',value:'84%',color:'bg-cyan-500',sub:'Relative average'},{icon:Wind,label:'Dengue Cases (Oct)',value:'8',color:'bg-red-500',sub:'\u2193 77% from peak'}].map((s,i)=>(<div key={i} className="bg-white rounded-xl shadow-sm border p-4"><div className={`p-2 rounded-lg w-fit ${s.color}`}><s.icon className="w-5 h-5 text-white"/></div><p className="mt-3 text-2xl font-bold">{s.value}</p><p className="text-sm text-gray-500">{s.label}</p><p className="text-xs text-gray-400">{s.sub}</p></div>))}</div>
+      <div className="grid lg:grid-cols-2 gap-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4"><h3 className="font-semibold mb-3">Rainfall vs. Dengue Cases</h3><ResponsiveContainer width="100%" height={280}><ComposedChart data={climateData}><CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0"/><XAxis dataKey="month" tick={{fontSize:11}}/><YAxis yAxisId="left" tick={{fontSize:11}}/><YAxis yAxisId="right" orientation="right" tick={{fontSize:11}}/><Tooltip/><Area yAxisId="left" type="monotone" dataKey="rainfall" fill="#bfdbfe" stroke="#3b82f6" name="Rainfall (mm)"/><Line yAxisId="right" type="monotone" dataKey="dengCases" stroke="#ef4444" strokeWidth={3} dot={{r:5}} name="Cases"/></ComposedChart></ResponsiveContainer></div>
+        <div className="bg-white rounded-xl shadow-sm border p-4"><h3 className="font-semibold mb-3">Temperature & Humidity</h3><ResponsiveContainer width="100%" height={280}><LineChart data={climateData}><CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0"/><XAxis dataKey="month" tick={{fontSize:11}}/><YAxis tick={{fontSize:11}}/><Tooltip/><Line type="monotone" dataKey="tempMax" stroke="#f97316" strokeWidth={2} name="Max Temp"/><Line type="monotone" dataKey="tempMin" stroke="#06b6d4" strokeWidth={2} name="Min Temp"/><Line type="monotone" dataKey="humidity" stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" name="Humidity (%)"/></LineChart></ResponsiveContainer></div>
+      </div>
+      <div className="bg-white rounded-xl shadow-sm border p-4"><h3 className="font-semibold mb-3">Vector Indices vs. Climate Overlay</h3><ResponsiveContainer width="100%" height={300}><ComposedChart data={combined}><CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0"/><XAxis dataKey="month" tick={{fontSize:11}}/><YAxis yAxisId="left" tick={{fontSize:11}}/><YAxis yAxisId="right" orientation="right" tick={{fontSize:11}}/><Tooltip/><Bar yAxisId="right" dataKey="rainfall" fill="#dbeafe" name="Rainfall (mm)" radius={[4,4,0,0]}/><Line yAxisId="left" type="monotone" dataKey="bi" stroke="#ef4444" strokeWidth={3} dot={{r:5}} name="Breteau Index"/><Line yAxisId="left" type="monotone" dataKey="hi" stroke="#eab308" strokeWidth={2} name="House Index"/></ComposedChart></ResponsiveContainer></div>
+    </div>
+  )
+}

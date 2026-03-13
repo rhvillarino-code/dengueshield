@@ -53,7 +53,7 @@ function ReferenceList({ refs }) {
           <li key={i} className="text-xs text-slate-600 leading-relaxed pl-4 border-l-2 border-emerald-200">
             {ref.apa}
             {ref.url && (
-              
+              <a
                 href={ref.url}
                 target="_blank"
                 rel="noopener noreferrer"

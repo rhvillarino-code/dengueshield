@@ -1,0 +1,44 @@
+# DengueSHIELD 🛡️🦟
+
+**Surveillance, Health Informatics, and Evidence-Led Defense**
+
+A web-based community participatory vector control platform integrating climate-responsive dengue surveillance for dengue hotspot barangays in Iloilo City, Philippines.
+
+## Features
+
+- 🗺️ **GIS-Enabled Breeding Site Mapping** — GPS coordinates and geotagged photo uploads
+- 🌡️ **Climate-Responsive Surveillance Dashboard** — PAGASA weather data integrated with vector indices
+- 🤖 **AI-Assisted Risk Stratification** — Logistic regression trained on historical dengue-climate data
+- 📚 **CBPLA Digital Learning Modules** — Culturally adapted content in Hiligaynon/Filipino
+- 📱 **Community Reporting System** — Mobile-friendly with offline capability
+
+## Tech Stack
+
+- **Frontend:** React.js + Tailwind CSS
+- **Backend:** Node.js + Express
+- **Database:** PostgreSQL + PostGIS
+- **Deployment:** Vercel / GitHub Pages (prototype)
+
+## Project Team
+
+- **Project Leader:** Resti Tito H. Villarino, Dev.Ed.D, RN, LPT
+- **Co-Investigator 1:** Maureen Lorence F. Villarino, MA.Ed., RN, LPT
+- **Co-Investigator 2:** Ryan Michael F. Oducado, PhD, MAN, MAEd, RN
+- **Co-Investigator 3:** Ayesha C. Penuela, PhD, MAN, RN, LPT
+- **International Advisor:** Jing Hu, MSc., PhD Candidate (UBO, France)
+
+## Institutional Partners
+
+- West Visayas State University (WVSU) — College of Nursing
+- Iloilo City Health Office (ICHO)
+- Department of Health — Western Visayas (DOH-WV)
+- Regional Epidemiology and Surveillance Unit (RESU) Region VI
+- Université de Bretagne Occidentale, Brest, France
+
+## Funded By
+
+WVHRDC / DOST-GIA (PhP 500,000.00)
+
+## License
+
+© 2026 West Visayas State University. All rights reserved.
